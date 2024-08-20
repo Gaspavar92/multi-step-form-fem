@@ -17,8 +17,8 @@ const Form = () => {
     }, [setStepCount]);
 
     return (
-        <form ref={formRef}>
-            <div className="relative steps">
+        <form ref={formRef} className="col-span-2 p-8 flex flex-col content-center flex-wrap">
+            <div className="steps w-2/3 h-full relative">
                 <FirstStep />
                 <SecondStep />
                 <ThirdStep />

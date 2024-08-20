@@ -12,7 +12,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='grid grid-cols-3 min-h-[80vh] min-w-[70vw] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 shadow-xl rounded-xl bg-white'>
       {/* 
         Elements of the same form are rendered conditionally, depending on what step we are in
         Wrap all elements within a form, and each element within a separate div
@@ -22,7 +22,7 @@ function App() {
         <Sidebar />
         <Form />
       </Context.Provider>
-    </>
+    </div>
   )
 }
 

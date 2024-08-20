@@ -13,7 +13,7 @@ const ThirdStep = () => {
     }
 
     return (
-        <div className={`${currentStep === 2 ? "visible" : "invisible"} absolute`}>
+        <div className={`${currentStep === 2 ? "block" : "hidden"} flex flex-col gap-8`}>
             <input id="name" name="address"></input>
             <label htmlFor="address">Name</label>
             <button onClick={next}>Next step</button>

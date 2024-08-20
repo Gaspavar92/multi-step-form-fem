@@ -1,0 +1,15 @@
+.bg-number {
+    background-color: var(--bg-number);
+};
+
+.number-col {
+    color: var(--number-col);
+};
+
+.number-col-normal {
+    color: white;
+}
+
+.step {
+    color: var(--text-col);
+};
