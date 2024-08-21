@@ -1,9 +1,7 @@
 import { useContext, createContext } from "react";
 
 interface formContext {
-    stepCount: number;
     currentStep: number;
-    setStepCount: React.Dispatch<React.SetStateAction<number>>;
     setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
     formData: object;
     setFormData: React.Dispatch<React.SetStateAction<object>>;
