@@ -21,23 +21,6 @@ input {
     border-radius: 8px;
 }
 
-button {
-    background-color: var(--button);
-    color: white;
-    width: fit-content;
-    padding: 10px 30px;
-    border-radius: 8px;
-    align-self: flex-end;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transition: .8s;
-}
-
-button:hover {
-    background-color: var(--button-hover);
-}
-
 :root {
     --bg-number: hsl(228, 100%, 84%);
     --text-col: hsl(231, 11%, 63%);
@@ -46,4 +29,4 @@ button:hover {
     --border: hsl(229, 24%, 87%);
     --button: hsl(213, 96%, 18%);
     --button-hover: hsl(243, 100%, 62%);
-};
+}
