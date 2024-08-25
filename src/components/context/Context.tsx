@@ -3,8 +3,6 @@ import { useContext, createContext } from "react";
 interface formContext {
     currentStep: number;
     setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
-    formData: object;
-    setFormData: React.Dispatch<React.SetStateAction<object>>;
   }
   
   export const Context = createContext<formContext | undefined>(undefined);

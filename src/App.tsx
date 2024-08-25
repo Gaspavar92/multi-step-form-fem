@@ -1,14 +1,12 @@
-import { useState} from 'react';
-import './App.css'
+import { useEffect, useState} from 'react';
 import Form from './components/Form'
 import Sidebar from './components/Sidebar';
 import { Context } from './components/context/Context';
+import "./App.css"
 
 function App() {
 
-  // const [stepCount, setStepCount] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState({});
 
 
   return (
@@ -18,7 +16,7 @@ function App() {
         Wrap all elements within a form, and each element within a separate div
         Animate the presentation of the form's elements on submit
       */}
-      <Context.Provider value={{currentStep, setCurrentStep, formData, setFormData}}>
+      <Context.Provider value={{currentStep, setCurrentStep}}>
         <Sidebar />
         <Form />
       </Context.Provider>

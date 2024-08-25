@@ -17,8 +17,8 @@ const Sidebar = () => {
 
             {steps.map((step, index) => {
                 return (
-                <div className="first flex gap-6">
-                    <div className={`${currentStep === index ? "bg-number number-col" : "bg-transparent text-white"} flex content-center justify-center flex-wrap border border-solid border-white rounded-full h-12 w-12`}>{step.number}</div>
+                <div key={step.step} className="first flex gap-6">
+                    <div className={`duration-500 ${currentStep === index ? "bg-number number-col" : "bg-transparent text-white"} flex content-center justify-center flex-wrap border border-solid border-white rounded-full h-12 w-12`}>{step.number}</div>
                     <div className="flex flex-col">
                         <p className="step">{step.step}</p>
                         <p className="text-white">{step.text}</p>
@@ -26,6 +26,7 @@ const Sidebar = () => {
                 </div>
                 )
             })}
+
         </div>
     )
 };
