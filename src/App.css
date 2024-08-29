@@ -29,3 +29,16 @@
 .next:hover {
     background-color: var(--button-hover);
 }
+
+.toggle {
+    transition: .2s;
+}
+
+input[type = "checkbox"]:checked + .toggle {
+    transform: translateX(135%);
+}
+
+.plan[data-checked = true] {
+    background-color: var(--selected);
+    border: 1px solid var(--button-hover);
+}

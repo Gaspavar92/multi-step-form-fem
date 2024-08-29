@@ -7,12 +7,18 @@ html, body {
     width: 100vh;
     background-color: var(--bg);
     font-family: "Ubuntu";
-    font-weight: 400;
+    /* font-weight: 400; */
 }
 
 h1 {
     font-weight: 800;
     font-size: 32px;
+    color: var(--number-col);
+}
+
+h2 {
+    font-weight: 500;
+    color: var(--number-col);
 }
 
 input {
@@ -22,11 +28,13 @@ input {
 }
 
 :root {
-    --bg-number: hsl(228, 100%, 84%);
-    --text-col: hsl(231, 11%, 63%);
-    --number-col: hsl(213, 96%, 18%);
-    --bg: hsl(231, 100%, 99%);
-    --border: hsl(229, 24%, 87%);
-    --button: hsl(213, 96%, 18%);
-    --button-hover: hsl(243, 100%, 62%);
+    --bg-number: #adbeff;
+    --text-col: #9699ab;
+    --number-col: #02295a;
+    --bg: #fafbff;
+    --border: #d6d9e6;
+    --button: #02295a;
+    --button-hover: #473dff;
+    --selected: #e2e9ff;
+
 }
