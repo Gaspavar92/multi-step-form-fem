@@ -1,4 +1,8 @@
-const FirstStep = ({onChange}) => {
+import { useFormContext } from "./context/Context";
+
+const FirstStep = () => {
+
+    const { handleChange } = useFormContext();
     
     return (
         <div className="flex flex-col gap-12">
@@ -8,18 +12,19 @@ const FirstStep = ({onChange}) => {
             </div>
 
             <div className="flex flex-col gap-4">
-                <div className="name form-section flex flex-col">
-                    <label htmlFor="name">Name</label>
-                    <input id="name" name="name" onChange={onChange}></input>
-                </div>
-                <div className="email form-section flex flex-col">
-                    <label htmlFor="email">Email Address</label>
-                    <input id="email" name="email" onChange={onChange}></input>
-                </div>
-                <div className="number form-section flex flex-col">
-                    <label htmlFor="number">Phone Number</label>
-                    <input id="number" name="number" onChange={onChange}></input>
-                </div>
+                    <label className="name form-section flex flex-col" htmlFor="name">
+                        Name
+                        <input id="name" name="name" onChange={handleChange}></input>
+                    </label>
+                    <label className="email form-section flex flex-col" htmlFor="email">
+                        Email Address
+                        <input id="email" name="email" onChange={handleChange}></input>
+                    </label>
+
+                    <label className="number form-section flex flex-col" htmlFor="number">
+                        Phone Number
+                        <input id="number" name="number" onChange={handleChange}></input>
+                    </label>
             </div>
         
         </div>

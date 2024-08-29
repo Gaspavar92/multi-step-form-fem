@@ -1,5 +1,6 @@
-const ThirdStep = ({onChange}) => {
+import AddOns from "./AddOns";
 
+const ThirdStep = () => {
 
     return (
         <div className="flex flex-col gap-12">
@@ -7,8 +8,7 @@ const ThirdStep = ({onChange}) => {
                 <h1>Pick add-ons</h1>  
                 <p>Add-ons help enhance your gaming experience.</p>
             </div>
-            <input id="name" name="address" onChange={onChange}></input>
-            <label htmlFor="address">Name</label>
+            <AddOns />
         </div>
     )
 };
