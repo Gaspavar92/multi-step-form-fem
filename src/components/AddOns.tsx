@@ -25,7 +25,7 @@ const AddOns = () => {
                         <label htmlFor={`${addOn.id}-${recurrence}`} className="flex gap-10 w-full p-4 has-[:checked]:bg-[#e2e9ff] has-[:checked]:border-[#473dff] duration-300 rounded-xl cursor-pointer border hover:border-[#473dff]">
                             <input onChange={(e) => {
                                 handleCheckboxChange(e, addOn.price)
-                            }} type="checkbox" className="choice" id={`${addOn.id}-${recurrence}`} name={`${addOn.id}-${recurrence}`}/>
+                            }} type="checkbox" className="choice" id={`${addOn.id}-${recurrence}`} name={`${addOn.name}`}/>
                             <div className="add-on-info">
                                 <h2>{addOn.name}</h2>
                                 <p className="text-sm text-[#9699ab]">{addOn.description}</p>
