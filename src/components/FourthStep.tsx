@@ -32,7 +32,7 @@ const FourthStep = () => {
                 <div className="final-add-ons border-t pt-4 flex flex-col gap-2">
                         {formData.addOns.map(addOn => {
                             return (
-                                <div className="selected-add-ons flex justify-between">
+                                <div key={addOn.name} className="selected-add-ons flex justify-between">
                                     <h3 className="add-on-name">{addOn.name}</h3>
                                     <p className="add-on-price">+${addOn.price}{formData.recurrence === "monthly" ? "/mo" : "/yr"}</p>
                                 </div>
