@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import { useFormContext } from "./context/Context";
-
 
 const Plans = () => {
 
-    const { recurrence, handlePlan, selectedPlan } = useFormContext();
+    const { recurrence, handlePlan, selectedPlan, setInvalid } = useFormContext();
 
     const plans = {
         monthly: [
@@ -17,6 +17,10 @@ const Plans = () => {
             {name: "Pro", price: "150"}
         ]
     };
+
+    useEffect(() => {
+        selectedPlan ? setInvalid(false) : setInvalid(true);
+    })
     
     return (
         <div className={`plans ${recurrence} flex gap-8 justify-between`}>
