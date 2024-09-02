@@ -22,12 +22,58 @@ const Form = () => {
     const [recurrence, setRecurrence] = useState("monthly");
     const [selectedPlan, setSelectedPlan] = useState("");
     const [completed, setCompleted] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [invalid, setInvalid] = useState(true);
 
     const [formData, setFormData] = useState({
         recurrence: "monthly",
         addOns: [],
         total: 0
     });
+
+    const validateInput = (name, value) => {
+            // form inputs validation
+
+            if (name === "name") {
+                if (value.length >= 1 && value.length <= 3) {
+                setErrors(prev => {
+                    return {...prev, name: "Name needs to be longer"}
+                });
+            } else {
+                setErrors(prev => {
+                    const { name, ...rest } = prev;
+                    return {...rest}
+                    })
+                }
+            }
+            
+            if (name === "email") {
+                if (value.length >= 1 && !value.includes("@")) {
+                    setErrors(prev => {
+                        return {...prev, email: "Invalid email format"}
+                    });
+                } else {
+                    setErrors(prev => {
+                        const { email, ...rest } = prev;
+                        return {...rest}
+                    })
+                }  
+            } 
+
+            if (name === "number") {
+                const numRegEx = /^\+?\d?\d{10}$/;
+                if (value.length >= 1 && !numRegEx.test(value)) {
+                    setErrors(prev => {
+                        return {...prev, number: "Invalid phone number"}
+                    })
+                } else {
+                    setErrors(prev => {
+                        const { number, ...rest } = prev;
+                        return {...rest};
+                    })
+                }
+            }
+    }
 
     const next = (e: React.MouseEvent) => {
         e.preventDefault()
@@ -51,16 +97,18 @@ const Form = () => {
 
     const handleChange = (e: React.ChangeEvent) => {
         setFormData((prev) => {
+            const { name, value } = e.target;
+            validateInput(name, value);
             return {...prev,
-                [e.target.name]: e.target.value
-            }
+                [name]: value
+            };
         })
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent, price) => {
         const { name, checked } = e.target;
 
-        setFormData((prev) => {
+        setFormData(prev => {
             if (checked) {
                 return {
                     ...prev,
@@ -83,11 +131,11 @@ const Form = () => {
 
     const handlePlan = (e: React.MouseEvent, planName, planPrice) => {
         setSelectedPlan(planName)
-        setFormData((prev) => {
+        setFormData(prev => {
             return {...prev,
                 total: planPrice,
-                "plan": planName,
-                "price": planPrice
+                plan: planName,
+                price: planPrice
             }
         })
     };
@@ -95,7 +143,6 @@ const Form = () => {
     const confirm = (e: React.MouseEvent) => {
         e.preventDefault()
         setCompleted(true);
-        console.log(formData)
     }
 
     const change = () => {
@@ -109,12 +156,12 @@ const Form = () => {
     }
 
     return (
-        <Context.Provider value={{handleChange, handlePlan, recurrence, setRecurrence, selectedPlan, setSelectedPlan, handleCheckboxChange, formData, change}}>
+        <Context.Provider value={{handleChange, handlePlan, recurrence, setRecurrence, selectedPlan, setSelectedPlan, handleCheckboxChange, formData, change, errors, setInvalid}}>
             <form className="col-span-2 p-8 flex flex-col content-center flex-wrap">
                 <div className="steps w-10/12 h-full relative">
                     {!completed && <CurrentStep />}
                     {!completed && currentStep > 0 && <button className="back absolute left-0 bottom-0" onClick={back}>Go Back</button>}
-                    {!completed && <button type='submit' className="next absolute right-0 bottom-0 text-white" onClick={currentStep === (steps.length - 1) ? confirm : next}>{currentStep === (steps.length - 1) ? "Confirm" : "Next Step"}</button>}
+                    {!completed && <button type='submit' className="disabled:bg-gray-400 next absolute right-0 bottom-0 text-white" onClick={currentStep === (steps.length - 1) ? confirm : next} disabled={invalid}>{currentStep === (steps.length - 1) ? "Confirm" : "Next Step"}</button>}
                     {completed && <ThankYou />}
                 </div>
             </form>
