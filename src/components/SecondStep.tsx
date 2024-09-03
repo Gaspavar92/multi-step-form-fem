@@ -18,17 +18,12 @@ const SecondStep = () => {
                 <div className={`monthly ${recurrence === "monthly" ? "monthly text-[#02295a]" : "text-[#9699ab]"} font-semibold`}>Monthly</div>
 
                 <label htmlFor="recurrence" className="bg-[#02295a] h-8 w-[65px] flex content-center flex-wrap rounded-full p-1 cursor-pointer">
-                    <input type="checkbox" checked={recurrence === "yearly"} value={recurrence} id="recurrence" name="recurrence" className="hidden" onChange={() => {
-                    
+                    <input type="checkbox" checked={recurrence === "yearly"} value={recurrence} id="recurrence" name="recurrence" className="hidden" onChange={(e) => {
                     const newRecurrence = recurrence === "monthly" ? "yearly" : "monthly";
+                    e.target.value = newRecurrence;
                     setRecurrence(newRecurrence);
                     setSelectedPlan("");
-                    handleChange({
-                        target: {
-                            name: 'recurrence',
-                            value: newRecurrence
-                        },
-                    });
+                    handleChange(e);
                     }}></input>
                     <div className="toggle h-6 w-6 rounded-full bg-white"></div>
                 </label>

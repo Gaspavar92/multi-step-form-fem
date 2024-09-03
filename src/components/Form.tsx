@@ -105,6 +105,7 @@ const Form = () => {
         setFormData((prev) => {
             const { name, value } = e.target as HTMLInputElement;
             validateInput(name, value);
+            console.log(name, value)
             return {...prev,
                 [name]: value
             };
