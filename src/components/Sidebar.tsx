@@ -1,9 +1,9 @@
-import { useFormContext } from "./context/Context";
+import { useAppContext } from "./context/AppContext";
 import '../App.css';
 
 const Sidebar = () => {
 
-    const {currentStep} = useFormContext();
+    const { currentStep } = useAppContext();
 
     const steps = [
         {number: 1, step: "STEP 1", text: "YOUR INFO"},

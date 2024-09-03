@@ -1,4 +1,4 @@
-import { useFormContext } from "./context/Context";
+import { useFormContext } from "./context/FormContext";
 
 const FourthStep = () => {
 
@@ -28,18 +28,16 @@ const FourthStep = () => {
                     <p className="plan-price">${formData.price}{formData.recurrence === "monthly" ? "/mo" : "/yr"}</p>
                 </div>
             {formData.addOns && 
-            <>
                 <div className="final-add-ons border-t pt-4 flex flex-col gap-2">
                         {formData.addOns.map(addOn => {
-                            return (
-                                <div key={addOn.name} className="selected-add-ons flex justify-between">
-                                    <h3 className="add-on-name">{addOn.name}</h3>
-                                    <p className="add-on-price">+${addOn.price}{formData.recurrence === "monthly" ? "/mo" : "/yr"}</p>
-                                </div>
-                            )
+                                return (
+                                    <div key={addOn.name} className="selected-add-ons flex justify-between">
+                                        <h3 className="add-on-name">{addOn.name}</h3>
+                                        <p className="add-on-price">+${addOn.price}{formData.recurrence === "monthly" ? "/mo" : "/yr"}</p>
+                                    </div>
+                                )
                         })}
-                    </div>
-                </>}
+                    </div>}
             </div>
                     <div className="total px-6 flex justify-between">
                         <div className="h3">Total ({formData.recurrence === "monthly" ? "per month" : "per year"})</div>

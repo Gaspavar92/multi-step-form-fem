@@ -1,13 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
 import ThirdStep from "./ThirdStep";
 import FourthStep from "./FourthStep";
-import { useFormContext } from "./context/Context";
-import { Context } from "./context/Context";
+import { useAppContext } from "./context/AppContext";
+import { Context } from "./context/FormContext";
 import ThankYou from "./ThankYou";
+import { FormDataType } from "./context/FormContext";
 
 const Form = () => {
+
+    interface ErrorsType {
+        [key: string]: string;
+    }
 
     const steps = [
         FirstStep,
@@ -16,22 +22,22 @@ const Form = () => {
         FourthStep
     ]
 
-    const { currentStep, setCurrentStep } = useFormContext()
+    const { currentStep, setCurrentStep } = useAppContext()
     const CurrentStep = steps[currentStep]
     
-    const [recurrence, setRecurrence] = useState("monthly");
-    const [selectedPlan, setSelectedPlan] = useState("");
-    const [completed, setCompleted] = useState(false);
-    const [errors, setErrors] = useState({});
+    const [recurrence, setRecurrence] = useState<string>("monthly");
+    const [selectedPlan, setSelectedPlan] = useState<string>("");
+    const [completed, setCompleted] = useState<boolean>(false);
+    const [errors, setErrors] = useState<ErrorsType>({});
     const [invalid, setInvalid] = useState(true);
 
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormDataType>({
         recurrence: "monthly",
         addOns: [],
         total: 0
     });
 
-    const validateInput = (name, value) => {
+    const validateInput = (name: string, value:string) => {
             // form inputs validation
 
             if (name === "name") {
@@ -41,7 +47,7 @@ const Form = () => {
                 });
             } else {
                 setErrors(prev => {
-                    const { name, ...rest } = prev;
+                    const { name: _, ...rest } = prev;
                     return {...rest}
                     })
                 }
@@ -54,7 +60,7 @@ const Form = () => {
                     });
                 } else {
                     setErrors(prev => {
-                        const { email, ...rest } = prev;
+                        const { email: _, ...rest } = prev;
                         return {...rest}
                     })
                 }  
@@ -68,7 +74,7 @@ const Form = () => {
                     })
                 } else {
                     setErrors(prev => {
-                        const { number, ...rest } = prev;
+                        const { number: _, ...rest } = prev;
                         return {...rest};
                     })
                 }
@@ -97,7 +103,7 @@ const Form = () => {
 
     const handleChange = (e: React.ChangeEvent) => {
         setFormData((prev) => {
-            const { name, value } = e.target;
+            const { name, value } = e.target as HTMLInputElement;
             validateInput(name, value);
             return {...prev,
                 [name]: value
@@ -105,8 +111,8 @@ const Form = () => {
         })
     };
 
-    const handleCheckboxChange = (e: React.ChangeEvent, price) => {
-        const { name, checked } = e.target;
+    const handleCheckboxChange = (e: React.ChangeEvent, price: string) => {
+        const { name, checked } = e.target as HTMLInputElement;
 
         setFormData(prev => {
             if (checked) {
@@ -129,7 +135,7 @@ const Form = () => {
         })
     };
 
-    const handlePlan = (e: React.MouseEvent, planName, planPrice) => {
+    const handlePlan = (planName: string, planPrice: string) => {
         setSelectedPlan(planName)
         setFormData(prev => {
             return {...prev,
@@ -143,6 +149,7 @@ const Form = () => {
     const confirm = (e: React.MouseEvent) => {
         e.preventDefault()
         setCompleted(true);
+        console.log(formData)
     }
 
     const change = () => {
@@ -156,7 +163,7 @@ const Form = () => {
     }
 
     return (
-        <Context.Provider value={{handleChange, handlePlan, recurrence, setRecurrence, selectedPlan, setSelectedPlan, handleCheckboxChange, formData, change, errors, setInvalid}}>
+        <Context.Provider value={{handleChange, handlePlan, recurrence, setRecurrence, selectedPlan, setSelectedPlan, handleCheckboxChange, formData, change, errors, setInvalid, currentStep, setCurrentStep}}>
             <form className="col-span-2 p-8 flex flex-col content-center flex-wrap">
                 <div className="steps w-10/12 h-full relative">
                     {!completed && <CurrentStep />}

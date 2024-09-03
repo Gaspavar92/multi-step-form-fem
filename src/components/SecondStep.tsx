@@ -1,4 +1,4 @@
-import { useFormContext } from "./context/Context";
+import { useFormContext } from "./context/FormContext";
 import Plans from "./Plans";
 
 const SecondStep = () => {
@@ -25,8 +25,8 @@ const SecondStep = () => {
                     setSelectedPlan("");
                     handleChange({
                         target: {
-                        name: 'recurrence',
-                        value: newRecurrence
+                            name: 'recurrence',
+                            value: newRecurrence
                         },
                     });
                     }}></input>

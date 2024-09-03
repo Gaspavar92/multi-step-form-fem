@@ -1,8 +1,17 @@
-import { useFormContext } from "./context/Context";
+import { useFormContext } from "./context/FormContext";
 
 const AddOns = () => {
 
-    const addOns = {
+    type addOnType = {
+        id: string, name: string, description: string, price: string;
+    }
+
+    interface addOnsObj {
+         monthly: addOnType[],
+         yearly: addOnType[]
+    }
+
+    const addOns: addOnsObj = {
         monthly: [
             {id: "on-ser", name: "Online service", description: "Access to multiplayer games", price: "1"},
             {id: "la-sto", name: "Larger storage", description: "Extra 1TB of cloud save", price: "2"},
@@ -19,7 +28,7 @@ const AddOns = () => {
 
     return (
         <div className="add-ons flex flex-col gap-6">
-            {addOns[recurrence].map(addOn => {
+            {(recurrence === "monthly" || recurrence === "yearly") && addOns[recurrence].map((addOn: addOnType) => {
                 return (
                     <div key={addOn.id} className="add-on flex">
                         <label htmlFor={`${addOn.id}-${recurrence}`} className="flex gap-10 w-full p-4 has-[:checked]:bg-[#e2e9ff] has-[:checked]:border-[#473dff] duration-300 rounded-xl cursor-pointer border hover:border-[#473dff]">
