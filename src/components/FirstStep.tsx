@@ -16,7 +16,7 @@ const FirstStep = () => {
                 setInvalid(true);
             }
         }
-    }, [nameInputValid, emailInputValid, numberInputValid, errors])
+    }, [nameInputValid, emailInputValid, numberInputValid, errors, setInvalid])
     
     return (
         <div className="flex flex-col gap-12">

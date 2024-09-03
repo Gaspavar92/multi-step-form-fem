@@ -29,6 +29,7 @@ interface FormContextType {
 
   export const Context = createContext<FormContextType | undefined>(undefined);
 
+  // eslint-disable-next-line react-refresh/only-export-components
   export const useFormContext = () => {
     const context = useContext(Context)
     if (!context) {
