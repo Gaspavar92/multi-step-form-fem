@@ -7,7 +7,6 @@ html, body {
     width: 100vh;
     background-color: var(--bg);
     font-family: "Ubuntu";
-    /* font-weight: 400; */
 }
 
 h1 {

@@ -13,7 +13,7 @@ const Sidebar = () => {
     ]
 
     return (
-        <div className="sidebar bg-[url('/Users/gaspavar/multi-step-form-vite/assets/images/bg-sidebar-desktop.svg')] bg-cover bg-center bg-no-repeat h-full rounded-xl p-8 flex flex-col gap-8">
+        <div className="sidebar bg-[url('/bg-sidebar-desktop.svg')] bg-cover bg-center bg-no-repeat h-full rounded-xl p-8 flex flex-col gap-8">
 
             {steps.map((step, index) => {
                 return (
