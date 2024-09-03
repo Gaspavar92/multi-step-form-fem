@@ -54,7 +54,8 @@ const Form = () => {
             }
             
             if (name === "email") {
-                if (value.length >= 1 && !value.includes("@")) {
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (value.length >= 1 && !emailRegex.test(value)) {
                     setErrors(prev => {
                         return {...prev, email: "Invalid email format"}
                     });
