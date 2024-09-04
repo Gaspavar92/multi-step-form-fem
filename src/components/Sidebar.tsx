@@ -20,8 +20,8 @@ const Sidebar = () => {
                 <button key={step.step} disabled={invalid} onClick={() => setCurrentStep(step.number - 1)} className="first md:content-center mt-4 flex-wrap md:flex-nowrap flex gap-6 cursor-pointer">
                     <div className={`duration-500 ${currentStep === index ? "bg-number number-col" : "bg-transparent text-white"} flex content-center justify-center flex-wrap border border-solid border-white rounded-full h-16 w-16 md:h-12 md:w-12`}>{step.number}</div>
                     <div className="flex flex-col">
-                        <h2 className="step hidden md:block text-start">{step.step}</h2>
-                        <p className="text-white hidden md:block text-start">{step.text}</p>
+                        <h2 className="step hidden md:block">{step.step}</h2>
+                        <p className="text-white hidden md:block">{step.text}</p>
                     </div>
                 </button>
                 )
