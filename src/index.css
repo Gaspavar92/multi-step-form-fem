@@ -2,9 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --bg-number: #adbeff;
+    --text-col: #9699ab;
+    --number-col: #02295a;
+    --bg: #fafbff;
+    --border: #d6d9e6;
+    --button: #02295a;
+    --button-hover: #473dff;
+    --selected: #e2e9ff;
+
+}
+
 html, body {
-    height: 100vh;
-    width: 100vh;
+    /* height: 100vh;
+    width: 100vh; */
     background-color: var(--bg);
     font-family: "Ubuntu";
 }
@@ -26,14 +38,16 @@ input {
     border-radius: 8px;
 }
 
-:root {
-    --bg-number: #adbeff;
-    --text-col: #9699ab;
-    --number-col: #02295a;
-    --bg: #fafbff;
-    --border: #d6d9e6;
-    --button: #02295a;
-    --button-hover: #473dff;
-    --selected: #e2e9ff;
+@media (max-width: 768px) {
+    h1 {
+        font-size: 26px;
+    }
 
+    p {
+        font-size: 12px;
+    }
+    
+    h2 {
+        font-size: 13px;
+    }
 }

@@ -151,7 +151,6 @@ const Form = () => {
     const confirm = (e: React.MouseEvent) => {
         e.preventDefault()
         setCompleted(true);
-        console.log(formData)
     }
 
     const change = () => {
@@ -166,11 +165,13 @@ const Form = () => {
 
     return (
         <Context.Provider value={{handleChange, handlePlan, recurrence, setRecurrence, selectedPlan, setSelectedPlan, handleCheckboxChange, formData, change, errors, setInvalid, currentStep, setCurrentStep}}>
-            <form className="col-span-2 p-8 flex flex-col content-center flex-wrap">
-                <div className="steps w-10/12 h-full relative">
+            <form className="md:col-span-2 h-full col-span-3 p-2 md:p-8 flex flex-col content-center flex-wrap">
+                <div className="steps w-10/12 h-full md:relative flex flex-col md:block justify-center">
                     {!completed && <CurrentStep />}
-                    {!completed && currentStep > 0 && <button className="back absolute left-0 bottom-0" onClick={back}>Go Back</button>}
-                    {!completed && <button type='submit' className="disabled:bg-gray-400 next absolute right-0 bottom-0 text-white" onClick={currentStep === (steps.length - 1) ? confirm : next} disabled={invalid}>{currentStep === (steps.length - 1) ? "Confirm" : "Next Step"}</button>}
+                    <div className="buttons bg-white md:bg-transparent absolute -bottom-6 right-0 left-0 bg-white w-full flex justify-between p-4">
+                        {!completed && currentStep > 0 && <button className="back absolute left-0 bottom-auto top-auto py-[10px] px-[30px]" onClick={back}>Go Back</button>}
+                        {!completed && <button type='submit' className="disabled:bg-gray-400 next text-white ml-auto" onClick={currentStep === (steps.length - 1) ? confirm : next} disabled={invalid}>{currentStep === (steps.length - 1) ? "Confirm" : "Next Step"}</button>}
+                    </div>
                     {completed && <ThankYou />}
                 </div>
             </form>

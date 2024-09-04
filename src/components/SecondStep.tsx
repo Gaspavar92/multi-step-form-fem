@@ -15,9 +15,9 @@ const SecondStep = () => {
             <Plans />
             <div className="change-recurrence w-full flex justify-center py-4 bg-[#f0f6ff] rounded-md gap-6">
 
-                <div className={`monthly ${recurrence === "monthly" ? "monthly text-[#02295a]" : "text-[#9699ab]"} font-semibold`}>Monthly</div>
+                <p className={`monthly ${recurrence === "monthly" ? "monthly text-[#02295a]" : "text-[#9699ab]"} font-semibold`}>Monthly</p>
 
-                <label htmlFor="recurrence" className="bg-[#02295a] h-8 w-[65px] flex content-center flex-wrap rounded-full p-1 cursor-pointer">
+                <label htmlFor="recurrence" className="bg-[#02295a] h-6 md:h-8 w-[45px] md:w-[65px] flex content-center flex-wrap rounded-full p-1 cursor-pointer">
                     <input type="checkbox" checked={recurrence === "yearly"} value={recurrence} id="recurrence" name="recurrence" className="hidden" onChange={(e) => {
                     const newRecurrence = recurrence === "monthly" ? "yearly" : "monthly";
                     e.target.value = newRecurrence;
@@ -25,10 +25,10 @@ const SecondStep = () => {
                     setSelectedPlan("");
                     handleChange(e);
                     }}></input>
-                    <div className="toggle h-6 w-6 rounded-full bg-white"></div>
+                    <div className="toggle h-4 md:h-6 w-4 md:w-6 rounded-full bg-white"></div>
                 </label>
 
-                <div className={`yearly ${recurrence === "yearly" ? "text-[#02295a]" : "text-[#9699ab]"} font-semibold`}>Yearly</div>
+                <p className={`yearly ${recurrence === "yearly" ? "text-[#02295a]" : "text-[#9699ab]"} font-semibold`}>Yearly</p>
 
             </div>
         </div>
