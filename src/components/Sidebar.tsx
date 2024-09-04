@@ -3,7 +3,7 @@ import '../App.css';
 
 const Sidebar = () => {
 
-    const { currentStep } = useAppContext();
+    const { currentStep, setCurrentStep, invalid } = useAppContext();
 
     const steps = [
         {number: 1, step: "STEP 1", text: "YOUR INFO"},
@@ -17,13 +17,13 @@ const Sidebar = () => {
 
             {steps.map((step, index) => {
                 return (
-                <div key={step.step} className="first content-center flex-wrap md:flex-nowrap flex gap-6 h-1/2">
+                <button key={step.step} disabled={invalid} onClick={() => setCurrentStep(step.number - 1)} className="first content-center flex-wrap md:flex-nowrap flex gap-6 h-1/2 cursor-pointer">
                     <div className={`duration-500 ${currentStep === index ? "bg-number number-col" : "bg-transparent text-white"} flex content-center justify-center flex-wrap border border-solid border-white rounded-full h-16 w-16 md:h-12 md:w-12`}>{step.number}</div>
                     <div className="flex flex-col">
                         <h2 className="step hidden md:block">{step.step}</h2>
                         <p className="text-white hidden md:block">{step.text}</p>
                     </div>
-                </div>
+                </button>
                 )
             })}
 

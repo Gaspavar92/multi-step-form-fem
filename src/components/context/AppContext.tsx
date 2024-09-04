@@ -2,7 +2,9 @@ import { useContext, createContext } from "react";
 
 interface AppContextType {
     currentStep: number;
-    setCurrentStep: React.Dispatch<React.SetStateAction<number>>
+    setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+    invalid: boolean;
+    setInvalid: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
   export const AppContext = createContext<AppContextType | undefined>(undefined);

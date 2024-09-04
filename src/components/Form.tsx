@@ -22,14 +22,13 @@ const Form = () => {
         FourthStep
     ]
 
-    const { currentStep, setCurrentStep } = useAppContext()
+    const { currentStep, setCurrentStep, invalid, setInvalid } = useAppContext()
     const CurrentStep = steps[currentStep]
     
     const [recurrence, setRecurrence] = useState<string>("monthly");
     const [selectedPlan, setSelectedPlan] = useState<string>("");
     const [completed, setCompleted] = useState<boolean>(false);
     const [errors, setErrors] = useState<ErrorsType>({});
-    const [invalid, setInvalid] = useState(true);
 
     const [formData, setFormData] = useState<FormDataType>({
         recurrence: "monthly",
@@ -168,7 +167,7 @@ const Form = () => {
             <form className="md:col-span-2 h-full col-span-3 p-2 md:p-8 flex flex-col content-center flex-wrap">
                 <div className="steps w-10/12 h-full md:relative flex flex-col md:block justify-center">
                     {!completed && <CurrentStep />}
-                    <div className="buttons bg-white md:bg-transparent absolute -bottom-6 right-0 left-0 bg-white w-full flex justify-between p-4">
+                    <div className="buttons bg-white md:bg-transparent absolute bottom-0 right-0 left-0 bg-white w-full flex justify-between p-4">
                         {!completed && currentStep > 0 && <button className="back absolute left-0 bottom-auto top-auto py-[10px] px-[30px]" onClick={back}>Go Back</button>}
                         {!completed && <button type='submit' className="disabled:bg-gray-400 next text-white ml-auto" onClick={currentStep === (steps.length - 1) ? confirm : next} disabled={invalid}>{currentStep === (steps.length - 1) ? "Confirm" : "Next Step"}</button>}
                     </div>
