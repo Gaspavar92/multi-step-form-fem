@@ -13,11 +13,11 @@ const Sidebar = () => {
     ]
 
     return (
-        <div className="sidebar bg-[url('/bg-sidebar-desktop.svg')] fixed h-[30vh] md:h-full w-full md:static top-0 left-0 bg-cover md:bg-center bg-[100%_80%] bg-no-repeat md:rounded-xl p-8 flex justify-center md:justify-start md:flex-col gap-0 md:gap-4 md:z-0 -z-40">
+        <div className="sidebar bg-[url('/bg-sidebar-desktop.svg')] fixed h-[30vh] md:h-full w-full md:static top-0 left-0 bg-cover md:bg-center bg-[100%_80%] bg-no-repeat md:rounded-xl p-8 flex justify-center md:justify-start md:flex-col md:gap-8 md:z-0 -z-40">
 
             {steps.map((step, index) => {
                 return (
-                <button key={step.step} disabled={invalid} onClick={() => setCurrentStep(step.number - 1)} className="first content-center flex-wrap md:flex-nowrap flex gap-6 h-1/2 cursor-pointer">
+                <button key={step.step} disabled={invalid} onClick={() => setCurrentStep(step.number - 1)} className="first md:content-center mt-4 flex-wrap md:flex-nowrap flex gap-6 cursor-pointer">
                     <div className={`duration-500 ${currentStep === index ? "bg-number number-col" : "bg-transparent text-white"} flex content-center justify-center flex-wrap border border-solid border-white rounded-full h-16 w-16 md:h-12 md:w-12`}>{step.number}</div>
                     <div className="flex flex-col">
                         <h2 className="step hidden md:block">{step.step}</h2>
