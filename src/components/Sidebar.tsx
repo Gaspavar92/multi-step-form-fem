@@ -13,7 +13,7 @@ const Sidebar = () => {
     ]
 
     return (
-        <div className="sidebar bg-[url('/bg-sidebar-desktop.svg')] fixed h-[30vh] md:h-full w-full md:static top-0 left-0 bg-cover md:bg-center bg-[100%_80%] bg-no-repeat md:rounded-xl p-8 flex justify-center md:justify-start md:flex-col gap-0 md:gap-8 md:z-0 -z-40">
+        <div className="sidebar bg-[url('/bg-sidebar-desktop.svg')] fixed h-[30vh] md:h-full w-full md:static top-0 left-0 bg-cover md:bg-center bg-[100%_80%] bg-no-repeat md:rounded-xl p-8 flex justify-center md:justify-start md:flex-col gap-0 md:gap-4 md:z-0 -z-40">
 
             {steps.map((step, index) => {
                 return (
