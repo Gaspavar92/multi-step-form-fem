@@ -7,7 +7,7 @@ const FirstStep = () => {
     const [nameInputValid, setNameInputValid] = useState(false);
     const [emailInputValid, setEmailInputValid] = useState(false);
     const [numberInputValid, setNumberInputValid] = useState(false);
-
+    
     useEffect(() => {
         if (nameInputValid && emailInputValid && numberInputValid) {
             if (!errors.name && !errors.email && !errors.number) {
